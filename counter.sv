@@ -15,7 +15,7 @@ module counter #(
 );
 
     // Counter
-    always_ff @(posedge int_osc, negedge reset) begin
+    always_ff @(posedge int_osc) begin
 
         // Reset counter and LED when reset is pressed
         // Reset is active LOW

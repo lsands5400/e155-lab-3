@@ -19,8 +19,11 @@ module lab3_ls(input logic[3:0]     col,
     scanner scan (int_osc, reset, en, col,
                 row, led);
 
+    synchronizer sync (int_osc, row, led, 
+                        currRow, currCol);
+
     // Check for bouncing and simulataneous inputs
-    debounce db (int_osc, row, led,
+    debounce db (int_osc, currRow, currCol,
                 press);
 
     // Check if button press can be registered and sent to the seven 
@@ -28,7 +31,7 @@ module lab3_ls(input logic[3:0]     col,
     buttonPress bp (int_osc, reset, press,
                     enSSDP);
     
-    storeDigit sd (int_osc, enSSDP, reset, row, led,
+    storeDigit sd (int_osc, enSSDP, reset, currRow, currCol,
                     s0, s1);
 
     muxCount mux (int_osc, reset, enSSDP, s0, s1,

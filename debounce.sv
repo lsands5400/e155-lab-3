@@ -7,9 +7,25 @@ module debounce(input logic         clk,
 
                 output logic        press);
 
+    typedef enum logic {S0, S1} statetype;
+    statetype state, nextstate;
     // check if multiple bits of led are on
 
     // check if one input is rapidly repeating
 
-    
+    always_ff @ (posedge clk) begin
+        if (!reset)          state <= S0;
+        else                state <= nextstate;
+    end
+
+    always_comb
+        begin
+            case(state)
+                S0: if 
+
+                S1:
+
+            endcase
+        end
+
 endmodule
