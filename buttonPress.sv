@@ -10,7 +10,7 @@ module buttonPress(input logic clk, reset, press,
 
     // State register
     always_ff @(posedge clk) begin
-        if (reset)          state <= S0;
+        if (!reset)          state <= S0;
         else                state <= nextstate;
 
     end
