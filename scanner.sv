@@ -13,8 +13,8 @@ module scanner (
 );
 
 	// Define parameters for counter
-	localparam COUNT = 24'd1_500_000;
-    localparam WIDTH = 24;
+    localparam int COUNT = 23'd1_500_000;
+    localparam int WIDTH = 23;
 	
 	logic[WIDTH-1:0] currCount;
 		

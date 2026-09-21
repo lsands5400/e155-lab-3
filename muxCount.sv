@@ -9,11 +9,11 @@ module muxCount(
     output logic[3:0]  sOn, 
     output logic       anode0, anode1
 );
-	localparam int COUNT = 400_000;
-    localparam int WIDTH = 19;
+	localparam COUNT = 19'd200_000;
+    localparam WIDTH = 19;
 
     logic[WIDTH-1:0]    counter;
-	logic				seg_select, segOn;
+	logic				seg_select;
     logic[1:0]  		anode;
 	
     // Time mux to decide which seven segment display to turn on
@@ -22,23 +22,17 @@ module muxCount(
 
 	always_comb 
 		begin 
-			if (!reset) begin
-				seg_select <= 1'b0;
-			end
-
-			else if (en) begin
-				if (counter == COUNT - 1) begin
-					seg_select <= ~seg_select;
-				end
-			end
-			else begin
-			end
+			if (counter >= COUNT/2 - 1)
+				seg_select = 1;
+			else
+				seg_select = 0;
 			
-			sOn <= seg_select ? s1 : s0;
-			anode <= seg_select ? 2'b10 : 2'b01; 
+			
+			sOn = seg_select ? s1 : s0;
+			anode = seg_select ? 2'b10 : 2'b01; 
 
-			anode0 <= anode[0];
-			anode1 <= anode[1];
+			anode0 = anode[0];
+			anode1 = anode[1];
 		end
 
 endmodule
