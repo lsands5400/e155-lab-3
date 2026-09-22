@@ -6,9 +6,8 @@
 
 module storeDigit_tb();
 
-    logic       reset, int_osc, press, enSSDP;
+    logic       reset, int_osc, enSSDP;
 	logic[3:0]	row, led;
-    logic[1:0]  S0, S1, S2;
 
     HSOSC #(.CLKHF_DIV(2'b01))
 		clk (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
