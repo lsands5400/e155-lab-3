@@ -16,8 +16,8 @@ module decodeKeypad_tb();
     );
 	
     always begin
-	clk = 0; #5;
-    clk = 1; #5;
+        clk = 0; #5;
+        clk = 1; #5;
     end
 
     initial begin
