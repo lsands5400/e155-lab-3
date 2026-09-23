@@ -22,24 +22,20 @@ module buttonPress(input logic clk, reset, press,
                 // 1. No other buttons are being pressed
                 // 2. Debouncing is not occurring
                 S0: if (press == 0) begin             
-                        nextstate <= S0;
-                        enSSDP <= 0;
+                        nextstate = S0;
                     end
                     else begin
-                        nextstate <= S1;
-                        enSSDP <= 1;
+                        nextstate = S1;
                     end
 
                 // State 1: 
                 // Initial press is registered and hex value is sent to seven 
                 // segment display
                 S1: if (press == 0) begin             
-                        nextstate <= S0;
-                        enSSDP <= 0;
+                        nextstate = S0;
                     end
                     else begin
-                        nextstate <= S2;
-                        enSSDP <= 0;
+                        nextstate = S2;
                     end
 
                 // State 2:
@@ -47,16 +43,17 @@ module buttonPress(input logic clk, reset, press,
                 // 1. Another button is currently being pressed
                 // 2. Debouncing is occuring
                 S2: if (press == 0) begin             
-                        nextstate <= S0;
-                        enable <=0;
+                        nextstate = S0;
                     end
                     else begin
-                        nextstate <= S2;
-                        enSSDP <= 0;
+                        nextstate = S2;
                     end
 
-                default: S0;
+                default:    nextstate = state;
             endcase
         end
+
+    // Output logic
+    assign enSSDP = (state == S1);
 
 endmodule

@@ -6,7 +6,7 @@
 
 module buttonPress_tb();
 
-	logic      	clk, reset, press, enSSDP;
+	logic      	int_osc, reset, press, enSSDP;
     
     buttonPress dut (
 		.clk(clk),
@@ -20,9 +20,10 @@ module buttonPress_tb();
 		clk (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
 
     initial begin
-
+      reset = 1;
+      #25;
     reset = 0;
-    #22;
+    #25;
 	reset = 1;
 	#10;  
 
@@ -44,10 +45,10 @@ module buttonPress_tb();
     #10
 	assert (enSSDP == 0)       // check outputs
 	else 
-		$error("Button Press test 1 failed."); 
+		$error("Button Press test 3 failed."); 
 	
 
-    #100 $stop;
+    #100 $finish;
     end
 
 endmodule
