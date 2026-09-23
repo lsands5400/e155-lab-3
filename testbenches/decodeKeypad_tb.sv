@@ -7,6 +7,7 @@
 module decodeKeypad_tb();
 
 	logic[3:0]	col, row, hex;
+    logic       clk;
     
     decodeKeypad dut (
 		.col(col),
@@ -37,6 +38,6 @@ module decodeKeypad_tb();
 	else 
 		$error("Keypad Decoder test 2 failed."); 
 	
-    #100 $stop;
+    #100 $finish;
     end
 endmodule

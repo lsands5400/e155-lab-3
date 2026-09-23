@@ -4,7 +4,7 @@
 // This module decodes the keypad inputs and turns them into their hex digits 
 // represented in binary.
 module decodeKeypad(input logic[3:0] row, col,
-					output logic[6:0] hex);
+					output logic[3:0] hex);
 
 	always_comb
 		case({row, col})
