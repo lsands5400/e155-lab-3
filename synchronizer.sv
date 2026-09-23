@@ -1,7 +1,7 @@
 // Lindsey Sands
 // lsands@g.hmc.edu
 // 09-20-2026
-// This is the synchronizer module.
+// This is the 4-bit two input/outputsynchronizer module.
 module synchronizer(input logic         clk, reset, en, 
                     input logic[3:0]    in1, in2, 
                     output logic[3:0]   out1, out2);
@@ -29,6 +29,6 @@ module synchronizer(input logic         clk, reset, en,
             out2 <= intermediate2;
         end
     end
-
+    
 endmodule
 
