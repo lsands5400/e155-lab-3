@@ -7,7 +7,6 @@ module storeDigit(input logic        clk, enSSDP, reset,
 
                   output logic       s0, s1);
 
-    // TODO: does synchronizer go here or in top level module?
     always_ff @ (posedge clk) begin
         decodeKeypad(row, led, hex);
 

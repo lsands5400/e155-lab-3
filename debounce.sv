@@ -15,7 +15,7 @@ module debounce(input logic         clk,
 
     always_ff @ (posedge clk) begin
         if (!reset)          state <= S0;
-        else                state <= nextstate;
+        else                 state <= nextstate;
     end
 
     always_comb

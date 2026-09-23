@@ -14,7 +14,7 @@ module scanner (
 
 	// Define parameters for counter
     localparam int COUNT = 23'd1_500_000;
-    localparam int WIDTH = 23;
+    localparam int WIDTH = 25;
 	
 	logic[WIDTH-1:0] currCount;
 		
@@ -23,17 +23,17 @@ module scanner (
 	
 	always_comb
 		begin 
-			led <= col;
+			led <= ~col;
 
 			if ((currCount >= 0) && (currCount <= COUNT)) begin
-				row <= 4'b1000;
+				row <= 4'b0111;
 				end
 			else if ((currCount > COUNT) && (currCount <= COUNT*2))
-				row <= 4'b0100;
+				row <= 4'b1011;
 			else if ((currCount > COUNT*2) && (currCount <= COUNT*3))
-				row <= 4'b0010;
+				row <= 4'b1101;
 			else if ((currCount > COUNT*3) && (currCount <= COUNT*4))
-				row <= 4'b0001;
+				row <= 4'b1110;
 		end
 
 endmodule
